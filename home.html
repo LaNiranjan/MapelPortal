@@ -1,0 +1,18 @@
+<div class="container mt-4">
+    <h1>Welcome to the Mapel Technologies</h1>
+    <div ng-if="!isAuthenticated">
+        <p>This is the home page. You can see this page without being logged in.</p>
+    </div>
+    <div ng-if="isAuthenticated">
+        <h4>Hello, {{displayName || main.username}} <span ng-if="userRoles && userRoles.length">({{ userRoles.join(', ') }})</span>!</h4>
+        <p>You are signed in. Enjoy access to all features and protected pages.</p>
+        <ul>
+            <li>Access your <b>Manage User</b> and <b>Report</b> pages from the sidebar.</li>
+            <li>Your session is secure with Microsoft Entra External ID.</li>
+        </ul>
+        <div ng-if="idTokenJson">
+            <h5>ID Token Content</h5>
+            <pre style="background:#f8f9fa; border-radius:6px; padding:12px;">{{idTokenJson}}</pre>
+        </div>
+    </div>
+</div>

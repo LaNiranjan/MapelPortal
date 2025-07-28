@@ -1,0 +1,14 @@
+<div class="container mt-4">
+    <h1>Reports</h1>
+    <div ng-if="!isAuthenticated">
+        <div class="alert alert-warning text-center">
+            <p>You must be logged in to access this page.</p>
+            <button class="btn btn-primary" ng-click="main.login()">Login</button>
+        </div>
+    </div>
+    <div ng-if="isAuthenticated">
+        <h4>Hello, {{displayName || main.username}} <span ng-if="userRoles && userRoles.length">({{ userRoles.join(', ') }})</span>!</h4>
+        <p>Here are your personalized reports and analytics. Only visible to signed-in users.</p>
+        <!-- Add more meaningful content for signed-in users here -->
+    </div>
+</div>

@@ -1,0 +1,122 @@
+body {
+    overflow-x: hidden;
+    background-color: #f8fbff;
+    color: #1a237e;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+#sidebar-wrapper {
+    min-height: 100vh;
+    margin-left: -15rem;
+    transition: margin .25s ease-out;
+    background: linear-gradient(180deg, #1565c0 0%, #1de9b6 100%); /* blue to green */
+    color: #fff;
+}
+
+#sidebar-wrapper .sidebar-heading {
+    padding: 0.875rem 1.25rem;
+    font-size: 1.2rem;
+    color: #fff;
+    font-weight: bold;
+    background: #1565c0;
+    letter-spacing: 1px;
+}
+
+#sidebar-wrapper .list-group {
+    width: 15rem;
+    background: transparent;
+}
+
+#page-content-wrapper {
+    min-width: 100vw;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    margin-left: 0;
+}
+
+@media (min-width: 768px) {
+    #sidebar-wrapper {
+        margin-left: 0;
+    }
+
+    #page-content-wrapper {
+        min-width: 0;
+        width: 100%;
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+        margin-left: -15rem;
+    }
+}
+
+.list-group-item.active {
+    background-color: #1de9b6 !important; /* green accent */
+    color: #1565c0 !important;
+    border-color: #1de9b6;
+    font-weight: bold;
+}
+
+.list-group-item {
+    background: #e3f2fd;
+    color: #1565c0;
+    border: none;
+    font-weight: 500;
+    transition: background 0.2s, color 0.2s;
+}
+
+.list-group-item:hover {
+    background: #1976d2;
+    color: #fff;
+}
+
+.btn-primary, .btn-primary:focus, .btn-primary:active {
+    background-color: #1565c0;
+    border-color: #1565c0;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #1de9b6;
+    border-color: #1de9b6;
+    color: #1565c0;
+}
+
+.btn-danger {
+    background-color: #1de9b6;
+    border-color: #1de9b6;
+    color: #1565c0;
+    font-weight: bold;
+}
+
+.btn-danger:hover {
+    background-color: #1565c0;
+    border-color: #1565c0;
+    color: #fff;
+}
+
+.navbar, .navbar-light, .bg-light, .border-bottom {
+    background: #fff !important;
+    border-bottom: 2px solid #1565c0;
+}
+
+.navbar-text, .navbar-light .navbar-nav .nav-link {
+    color: #1565c0 !important;
+    font-weight: 500;
+}
+
+.card {
+    border: 1px solid #1de9b6;
+    box-shadow: 0 2px 8px rgba(21,101,192,0.08);
+}
+
+.alert-warning {
+    background: #e3f2fd;
+    color: #1565c0;
+    border-color: #1de9b6;
+}
+
+h1, h4 {
+    color: #1565c0;
+}
+

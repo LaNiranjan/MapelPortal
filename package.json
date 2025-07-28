@@ -1,0 +1,17 @@
+{
+  "name": "angular-winsurf-app",
+  "version": "1.0.0",
+  "description": "A modern Angular web application with Azure Entra External ID.",
+  "main": "app.js",
+  "scripts": {
+    "start": "http-server -c-1"
+  },
+  "private": true,
+  "dependencies": {
+    "@azure/msal-browser": "^4.15.0",
+    "angular": "^1.8.3"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}

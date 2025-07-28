@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="mapelApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapel Technologies</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body ng-controller="MainController as main">
+
+    <div class="d-flex" id="wrapper">
+
+        <!-- Sidebar -->
+        <div class="bg-light border-right d-flex flex-column justify-content-between shadow-lg" id="sidebar-wrapper" style="min-height: 100vh;">
+            <div>
+                <div class="sidebar-heading text-center py-4">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Logo" style="width:48px;height:48px;">
+                    <div style="font-size:1.3rem; font-weight:700; margin-top:8px; letter-spacing:1px;">Mapel</div>
+                </div>
+                <div class="list-group list-group-flush mt-4">
+                    <a ui-sref="home" class="list-group-item list-group-item-action bg-light" ui-sref-active="active" aria-label="Home">Home</a>
+                    <a ui-sref="manage-user" class="list-group-item list-group-item-action bg-light" ui-sref-active="active" aria-label="Manage User" ng-if="userRoles && userRoles.indexOf('Administrator') !== -1">Manage User</a>
+                    <a ui-sref="report" class="list-group-item list-group-item-action bg-light" ui-sref-active="active" aria-label="Report" ng-if="userRoles && (userRoles.indexOf('Administrator') !== -1 || userRoles.indexOf('Manager') !== -1)">Report</a>
+                    <a ui-sref="invite" class="list-group-item list-group-item-action bg-light" ui-sref-active="active" aria-label="Invitation Send" ng-if="userRoles && userRoles.indexOf('Administrator') !== -1">Invitation Send</a>
+                </div>
+            </div>
+            <div class="p-3">
+                <button class="btn btn-danger btn-block rounded-pill" ng-if="main.isAuthenticated" ng-click="main.logout()" aria-label="Logout">
+                    <span class="mr-2"><i class="fas fa-sign-out-alt"></i></span> Logout
+                </button>
+            </div>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom shadow-sm" style="min-height: 64px;">
+                <button class="btn btn-primary mr-3" id="menu-toggle" aria-label="Toggle sidebar">☰</button>
+                <span class="navbar-brand mb-0 h1">Mapel Portal</span>
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                        <li class="nav-item d-flex align-items-center">
+                            <span class="navbar-text mr-3" ng-if="main.isAuthenticated">
+                                <img ng-if="main.isAuthenticated" src="https://ui-avatars.com/api/?name={{displayName || main.username}}&background=1de9b6&color=1565c0&rounded=true&size=32" alt="User avatar" style="width:32px;height:32px;border-radius:50%;margin-right:6px;vertical-align:middle;">
+                                Welcome, <b>{{ displayName || main.username }}</b> <span ng-if="userRoles && userRoles.length">({{ userRoles.join(', ') }})</span>
+                            </span>
+                            <button class="btn btn-outline-primary rounded-pill" ng-if="!main.isAuthenticated" ng-click="main.login()">Login</button>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <div class="container-fluid">
+                <div ng-if="!showLoginRequired" ui-view></div>
+                <div ng-if="showLoginRequired" ng-include="'login-required.html'"></div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.min.js"></script>
+    
+    <!-- MSAL -->
+    <script src="https://alcdn.msauth.net/browser/2.38.2/js/msal-browser.min.js"></script>
+
+    <!-- App Scripts -->
+    <script src="app.js"></script>
+
+    <!-- jQuery and Bootstrap Bundle (with Popper) -->
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+    $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+
+    <style>
+      body {
+        background: linear-gradient(135deg, #e3f2fd 0%, #ffffff 100%) fixed;
+      }
+      .card, .alert {
+        border-radius: 1rem;
+      }
+    </style>
+
+</body>
+</html>
