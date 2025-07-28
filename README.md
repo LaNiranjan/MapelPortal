@@ -1,4 +1,4 @@
-# AngularJS WinSurf Application
+# AngularJS  Application
 
 This is a web application built with AngularJS, featuring a responsive layout with a header, a collapsible sidebar, and user authentication using Azure Entra External ID.
 
