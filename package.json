@@ -5,6 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "http-server -c-1"
+    "build": "ng build --prod"
   },
   "private": true,
   "dependencies": {
