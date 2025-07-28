@@ -4,7 +4,8 @@
   "description": "A modern Angular web application with Azure Entra External ID.",
   "main": "app.js",
   "scripts": {
-    "start": "http-server -c-1"
+    "start": "http-server -c-1",
+    "build": "echo 'Build completed - static files ready' && exit 0"
   },
   "private": true,
   "dependencies": {
